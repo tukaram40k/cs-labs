@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { encrypt, decrypt } from "../utils/lab1.ts";
 
-const Lab1: React.FC = () => {
+const Task1: React.FC = () => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const [isEncrypt, setIsEncrypt] = useState(true);
@@ -120,4 +120,4 @@ const Lab1: React.FC = () => {
   );
 }
 
-export default Lab1;
+export default Task1;
