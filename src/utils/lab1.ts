@@ -1,4 +1,4 @@
-const isAlpha = (str: string) => /^[a-zA-Z]*$/.test(str);
+export const isAlpha = (str: string) => /^[a-zA-Z]*$/.test(str);
 
 function checkAndConvertInt(input: string): number | null {
   const num = parseInt(input, 10);

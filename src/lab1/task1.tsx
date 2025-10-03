@@ -71,7 +71,7 @@ const Task1: React.FC = () => {
           {/* Key Input */}
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              Shift Key (0-25)
+              Key (0-25)
             </label>
             <input
               type="number"
