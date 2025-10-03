@@ -28,11 +28,7 @@ const Task2: React.FC = () => {
     let value = e.target.value;
     value = value.toUpperCase();
 
-    if (!isAlpha(value) || [...value].length < 7) {
-      alert('Second key must be A-Z and at least 7 letters')
-    } else {
-      setKey2(value);
-    }
+    setKey2(value);
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -45,10 +41,21 @@ const Task2: React.FC = () => {
       return;
     }
 
+    if (!isAlpha(key2) || [...key2].length < 7) {
+      alert('Second key must be A-Z and at least 7 letters');
+      return;
+    }
+
+    const new_chars = new Set([...key2]);
+
+    for (const char of chars) {
+      new_chars.add(char);
+    }
+
     try {
       const result = isEncrypt
-        ? encrypt(key, inputText, chars)
-        : decrypt(key, inputText, chars);
+        ? encrypt(key, inputText, [...new_chars])
+        : decrypt(key, inputText, [...new_chars]);
       setOutputText(result);
     } catch (error) {
       setOutputText('Error processing text');
@@ -99,12 +106,12 @@ const Task2: React.FC = () => {
           {/* Second Key Input */}
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              Second Key
+              Second Key (text)
             </label>
             <textarea
               value={key2}
               onChange={handleKey2Change}
-              className="w-full h-32 px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
+              className="w-full h-13 px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
               placeholder="Enter second key"
             />
           </div>
